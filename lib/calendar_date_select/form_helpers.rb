@@ -109,6 +109,19 @@ module CalendarDateSelect::FormHelpers
     calendar_date_select_output(tag, image, options, javascript_options)
   end
 
+  # This is included for the test suite. It replaces the now-deprecated
+  # ActionView::Helpers::PrototypeHelper#options_for_javascript:
+  #
+  #   https://apidock.com/rails/ActionView/Helpers/PrototypeHelper/options_for_javascript
+  #
+  def options_for_javascript(options)
+    if options.empty?
+      '{}'
+    else
+      "{#{options.keys.map { |k| "#{k}:#{options[k]}" }.sort.join(', ')}}"
+    end
+  end
+
   # Similar to the difference between +text_field_tag+ and +text_field+, this method behaves like +text_field+
   #
   # It receives the same options as +calendar_date_select_tag+.  Need for time selection is automatically detected by checking the corresponding column meta information of Model#columns_hash
