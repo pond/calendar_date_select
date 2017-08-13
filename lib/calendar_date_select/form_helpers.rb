@@ -109,8 +109,8 @@ module CalendarDateSelect::FormHelpers
     calendar_date_select_output(tag, image, options, javascript_options)
   end
 
-  # This is included for the test suite. It replaces the now-deprecated
-  # ActionView::Helpers::PrototypeHelper#options_for_javascript:
+  # This is included for the test suite and as a local override. It replaces
+  # deprecated ActionView::Helpers::PrototypeHelper#options_for_javascript:
   #
   #   https://apidock.com/rails/ActionView/Helpers/PrototypeHelper/options_for_javascript
   #

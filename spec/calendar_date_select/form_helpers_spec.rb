@@ -62,14 +62,14 @@ describe CalendarDateSelect::FormHelpers do
       @model.start_datetime = nil
       output = calendar_date_select(:model, :start_datetime, :default_time => Date.parse("January 2, 2007"))
       expect(output).to match(/value=""/)
-      expect(output).to include("default_time:new Date('January 02, 2007 12:00 AM')")
+      expect(output).to include("default_time:new Date(&#39;January 02, 2007 12:00 AM&#39;)")
     end
 
     it "should wrap formatted date and time with Date() when passed a time object" do
       @model.start_datetime = nil
       output = calendar_date_select(:model, :start_datetime, :default_time => Time.parse("January 2, 2007 5:45 PM"))
       expect(output).to match(/value=""/)
-      expect(output).to include("default_time:new Date('January 02, 2007 05:45 PM')")
+      expect(output).to include("default_time:new Date(&#39;January 02, 2007 05:45 PM&#39;)")
     end
   end
 
@@ -134,7 +134,7 @@ describe CalendarDateSelect::FormHelpers do
   it "should respect parameters provided in default_options" do
     new_options = CalendarDateSelect.default_options.merge(:popup => "force")
     allow( CalendarDateSelect ).to receive( :default_options ).and_return( new_options )
-    expect(calendar_date_select_tag(:name, "")).to include("popup:'force'")
+    expect(calendar_date_select_tag(:name, "")).to include("popup:&#39;force&#39;")
   end
 
   it "should respect the :image option" do
