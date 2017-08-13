@@ -22,18 +22,6 @@ class String
   end
 end
 
-module CalendarDateSelectFormHelpers
-  class CalendarDateSelectTag
-    def options_for_javascript(options)
-      if options.empty?
-        '{}'
-      else
-        "{#{options.keys.map { |k| "#{k}:#{options[k]}" }.sort.join(', ')}}"
-      end
-    end
-  end
-end
-
 RSpec.configure do | config |
 
   # http://stackoverflow.com/questions/1819614/how-do-i-globally-configure-rspec-to-keep-the-color-and-format-specdoc-o
